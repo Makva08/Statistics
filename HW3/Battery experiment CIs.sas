@@ -19,10 +19,6 @@ data battery;
 4 460
 ;
 run;
-/* This code generates a result with comparisons of Bonferroni, Scheffe, Tukey and Dunnets methods of Confidence Intervals.
-Its using means u2-u1, u3-u1 and u4-u1 meaning 1 is the control group. 
-Result yields that Tukey method is the best for multiple comparisons, 
-as its confidence limits are most confined over difference between means.*/
 proc GLM data=battery;
  class BatteryType;
  model LifePerCost = BatteryType;

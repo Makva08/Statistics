@@ -1,3 +1,5 @@
+/* 	This example compares three diets on weight control
+	Experimenter eould like to detect difference of 4 kg w/prob 90% */
 data power;
 input r @@;
 v=3;
@@ -11,7 +13,7 @@ ncp=r*diff**2/(2*sigma**2);
 Falpha=finv(1-alpha, df1, df2);
 power=1-probf(Falpha, df1, df2, ncp);
 lines;
-3 4 5 6 7 8 9
+5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100
 ;
 run;
 proc print; 
