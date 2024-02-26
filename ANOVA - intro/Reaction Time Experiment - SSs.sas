@@ -37,8 +37,8 @@ run;
 /* Generate Interaction plots */
 proc gplot data=reaction_times;
     plot ReactionTime*ElapsedTime=Cue / overlay;
-    symbol1 value=dot color=red;
-    symbol2 value=dot color=blue;
+    symbol1 interpol=join value=dot color=red;
+    symbol2 interpol=join value=dot color=blue;
     title 'Interaction Plot for Cue and ElapsedTime';
 run;
 quit;
