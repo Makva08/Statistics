@@ -1,6 +1,6 @@
 data trout;
-   input SulfamerazineLvl Hemoglobin;
-   lines;
+input SulfamerazineLvl Hemoglobin;
+lines;
 1 6.7
 1 7.8
 1 5.5
@@ -64,7 +64,19 @@ put "Critical F Value (Falpha): " Falpha;
 run;
 /* calculating 95% confidence intervals for treatment-versus-control comparisons
 regarding absence of sulfamerazine in the diet */
+proc means data=trout mean;
+class SulfamerazineLvl;
+var Hemoglobin;
+output out=mean_results mean=GroupMean;
+run;
+proc print data=mean_results;
+run;
+/* for 0.05 alpha and 36 dof t=1.688*/
 proc power;
-MSE=2.2022;
-twosamplemeans test = diff stddev=sqrt(2*MSE) meandiff=0 npergroup=. power=0.95 alpha=0.05 sides=2 width=2
+onewayanova test=overall
+groupmeans=(7 9.33 9.03 8.63)
+power=0.95
+alpha=0.05 
+stddev=2
+npergroup=.;
 run;

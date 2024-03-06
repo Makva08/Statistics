@@ -63,7 +63,7 @@ proc iml;
     mse = 0.2703562;
     df_error = 5; 
     alpha = 0.10; /* 90% confidence interval */
-    chi_square_critical_value = quantile("chisquare", 1 - alpha/2, df_error);
+    chi_square_critical_value = quantile("chisquare", alpha, df_error);
     upper_limit_sigma_squared = (df_error * mse) / chi_square_critical_value;
     print upper_limit_sigma_squared;
 quit;

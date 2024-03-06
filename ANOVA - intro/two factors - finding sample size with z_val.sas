@@ -1,3 +1,4 @@
+/* Finding sample size with Z-val */
 %let alpha = 0.10; 
 %let max_mse = 25;
 %let ci_width = 10;
@@ -19,3 +20,6 @@ run;
 
 /* Had an issue with variable definition, thats why they are created in macro
 and then called in data step */
+
+
+/* Finding sample size with t-val */
