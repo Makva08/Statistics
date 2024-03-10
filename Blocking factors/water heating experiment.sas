@@ -66,21 +66,25 @@ run;
 proc freq data=water_heating;
   tables C;
 run;
+/* Calculating the necessary number of blocks for the 95% simultaneous confidence 
+intervals for all pairwise comparisons of the main effects of C to have a width 
+less than or equal to 40 when the block size is kept at 12 */
 
-/*data size;*/
-/*input r@@;*/
-/*a=5;*/
-/*b=12;*/
-/*alpha = 0.05;*/
-/*mse = 1200.336;*/
-/*prob=1-alpha;*/
-/*df=a*b*(r-1);*/
-/*qT=probmc('range',.,prob,df,a);*/
-/*width=2*(qT/2**0.5)*sqrt(mse*2/(b*r));*/
-/*lines;*/
-/*3 4 5 6 7 8 10 11 12 13 14*/
-/*;*/
-/**/
-/*proc print data=size;*/
-/*var r width;*/
-/*run;*/
+data size;
+input r@@;
+C = 3;
+D = 2;
+E = 2;
+df = C * D * E * r - C - D - E + 1;
+sigma2 = 1200.336;
+alpha = 0.05;
+w = probmc('range', ., 1 - alpha, df, C) / sqrt(2);
+width = 2 * w * sqrt(2 * sigma2 / (C * r));
+lines;
+8 9 10 11 12
+;
+run;
+
+proc print;
+var r width;
+run;
