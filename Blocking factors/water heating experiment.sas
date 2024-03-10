@@ -58,7 +58,7 @@ proc glm data=water_heating;
    model time = block C D E_val C*D C*E_val D*E_val C*D*E_val;
    lsmeans C*D C*E_val D*E_val C*D*E_val /alpha=0.05 adjust=tukey;
    /* Testing the null hypothesis that the main effects of Factor C are all equal*/
-   lsmeans C/cl pdiff alpha=0.05;
+   lsmeans C/cl pdiff adjust=tukey alpha=0.05;
    contrast 'Test for Main Effects of C' C 1 -1 0;
 run;
 
@@ -66,3 +66,21 @@ run;
 proc freq data=water_heating;
   tables C;
 run;
+
+/*data size;*/
+/*input r@@;*/
+/*a=5;*/
+/*b=12;*/
+/*alpha = 0.05;*/
+/*mse = 1200.336;*/
+/*prob=1-alpha;*/
+/*df=a*b*(r-1);*/
+/*qT=probmc('range',.,prob,df,a);*/
+/*width=2*(qT/2**0.5)*sqrt(mse*2/(b*r));*/
+/*lines;*/
+/*3 4 5 6 7 8 10 11 12 13 14*/
+/*;*/
+/**/
+/*proc print data=size;*/
+/*var r width;*/
+/*run;*/
