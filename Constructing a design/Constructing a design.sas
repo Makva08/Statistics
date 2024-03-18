@@ -17,6 +17,7 @@ proc optex data=Candidate seed=12345;
 class Source; 
 model Source Solvent|RTemp|Press|Time@2 
 	RTemp*RTemp Press*Press Time*Time; 
+	generate n = 25;  /* this statement requests how many runs will experiment have */
 run;
 
 /* The default number of runs for a design is assumed by the optex procedure to be 10 plus # of params (in this case 10+18 = 28). 
