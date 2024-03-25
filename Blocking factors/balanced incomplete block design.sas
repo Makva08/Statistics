@@ -20,7 +20,7 @@ run;
 data size;
 	r = 15;
 	alpha = 0.05;
-	mse = 30;
+	mse = 2;
 	v = 7; /*num of treatments*/
 	k = 5; /*block size*/
 	b = 21;
@@ -29,9 +29,10 @@ data size;
 	q = probmc('range', ., 1-alpha, df, v);
 	msd_tukey = (q/sqrt(2)) * sqrt(2*mse*k/(lambda*v));
 	width_tukey = 2 *msd_tukey;
-	dunnett_crit = 2.5;
-	msd_dunnett = dunnett_crit * sqrt(mse/r);
-	width_dunnett = 2 * msd_dunnett;
+/*	dunnett_crit = 2.5;*/
+/*	msd_dunnett = dunnett_crit * sqrt(mse/r);*/
+/*	width_dunnett = 2 * msd_dunnett;*/
+	width_Dunnett=2*probmc('dunnett2',.,1-alpha,df,v-1)*sqrt(2*mse*k/(lambda*v));
 lines;
 10 11 12 13 14 15 16 17 18 19
 ;
