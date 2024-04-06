@@ -1,8 +1,8 @@
 data cigarett;
   input WP A @@;
-  do SP=1 to 6; 
+  do SP = 1 to 6; 
     input B C time @@;
-	D=10*B+C;
+	D = 10*B+C;
     output;
   end;
   
@@ -19,4 +19,17 @@ data cigarett;
   10 1  2 3 309  1 3 314  2 2 259  1 1 344  2 1 310  1 2 322 
 ;
 proc print;
+run;
+
+proc mixed data = cigarett;
+  class WP A D;
+  model time = A D A*D;
+  random WP(A);
+run;
+
+proc mixed data = cigarett;
+class WP A B C;
+model time = A|B|C;
+random WP(A);
+lsmeans B /cl pdiff adjust = Tukey;
 run;
