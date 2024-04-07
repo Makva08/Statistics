@@ -11,7 +11,7 @@ run;
 proc optex data=CandidateFullFactorial seed=12345;
     class RF1 RF2 Pressure;
     model RF1|RF2|Pressure@2;
-    generate n=35; /* Selecting 35 runs */
+    generate n=32; /* Selecting 32 runs */
     output out=Design;
 run;
 
