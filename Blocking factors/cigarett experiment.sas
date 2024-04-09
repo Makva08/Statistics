@@ -1,3 +1,17 @@
+/*This experiment aimed to determine the factors that affect the length of time that a cigarette will burn.
+ 
+Three factors of interest: 
+“Tar” (factor A ) at two levels, “regular” and “ultra-light,”’
+“Brand” (factor B ) at two levels, “name brand” and “generic brand” (coded 1 and 2),
+“Age” (factor C ) at three levels, “fresh,” ” 24 hour air exposure,” “48 hour air exposure.” 
+
+The cigarettes were to be burned in whole plots of size six. 
+There were ten whole plots, and these were assigned at random to the tar levels so that each tar level was assigned five whole plots.
+The six split plots (time slots) in each whole plot were assigned at random to the six brand/age treatment combinations. 
+Marks were made across the seam of each cigarette at a given distance apart. 
+Each cigarette was lit at the beginning of its allotted time slot, and the time taken to burn between the two marks was recorded.
+*/
+
 data cigarett;
   input WP A @@;
   do SP = 1 to 6; 
