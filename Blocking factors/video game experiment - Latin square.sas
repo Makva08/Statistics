@@ -24,3 +24,15 @@ data videogame;
 run;
 proc print;
 run;
+
+proc glm data=videogame;
+   class order day trtmt;
+   model y = order day trtmt / solution;
+   lsmeans trtmt /cl pdiff=all adjust=tukey;
+run;
+
+proc mixed data=videogame;
+   class day order trtmt;
+   model y = order day trtmt;
+   estimate 'Music vs No Music' trtmt 1 1 1 -1.5 -1.5 / divisor=3 cl alpha=0.05;
+run;
