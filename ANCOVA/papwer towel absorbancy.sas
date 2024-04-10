@@ -1,3 +1,13 @@
+/* Paper towel absorbancy experiment was run to compare the effects of two treatment factors:
+brand and printing, on the absorbancy of paper towels.
+1st factors A: Three brands. 2nd factors B: white and printed towels. 
+For each observation, water was dripped from above a towel, which was horizontally suspended between two pairs of books
+on a flat surface, until the water began leaking through to the surface below. 
+The time to collect each observation was measured in s. 
+Absorbancy was measured as the number of water drops absorbed per square inch of towel. 
+The rate at which the water droplets fell to the towel was measured (in drops/s) as a covariate. 
+*/
+
 data papertowel;
     input run trtmt AB drops time area rate absorb;
     lines;
@@ -30,6 +40,7 @@ quit; */
 
 proc glm data=papertowel;
 class trtmt;
-model absorb = trtmt rate;
+model absorb = trtmt rate/solution;
 title 'One-Way ANCOVA';
 run;
+
