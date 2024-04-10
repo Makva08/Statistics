@@ -31,4 +31,5 @@ quit; */
 proc glm data=papertowel;
 class trtmt;
 model absorb = trtmt rate;
+title 'One-Way ANCOVA';
 run;
